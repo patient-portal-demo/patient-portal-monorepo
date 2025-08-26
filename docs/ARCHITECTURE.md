@@ -332,3 +332,70 @@ POST   /api/v1/lab-results/{id}/explanation   # Get AI explanation of results
 - **Environment Promotion**: Dev → Staging → Production
 - **Rollback Strategy**: Blue-green deployments with instant rollback
 - **Change Approval**: Required approvals for production changes
+
+## 🚀 Monorepo Development Setup
+
+### Prerequisites
+- Node.js 18+
+- Python 3.11+
+- Docker
+- AWS CLI configured
+- PostgreSQL (for local development)
+
+### Quick Start
+```bash
+# Clone the monorepo
+git clone https://github.com/patient-portal-demo/patient-portal-monorepo.git
+cd patient-portal-monorepo
+
+# Install all dependencies using npm workspaces
+npm install
+
+# Set up database
+cd packages/database-schema
+docker-compose up -d postgres
+python -m alembic upgrade head
+
+# Start development servers
+npm run dev:backend     # Backend API on port 8000
+npm run dev:frontend    # Frontend on port 3000
+```
+
+### Workspace Commands
+```bash
+# Build all applications
+npm run build
+
+# Test all applications  
+npm test
+
+# Lint all code
+npm run lint
+
+# Deploy infrastructure
+npm run deploy:infrastructure
+
+# Run database migrations
+npm run db:migrate
+```
+
+## 📂 Monorepo Benefits
+
+### Unified Development
+- **Single Repository**: All components in one place
+- **Shared Dependencies**: Common packages managed centrally
+- **Consistent Tooling**: Unified linting, testing, and build processes
+- **Atomic Changes**: Cross-component changes in single commits
+
+### Simplified CI/CD
+- **Single Pipeline**: One GitHub Actions workflow for all components
+- **Coordinated Deployments**: Deploy frontend, backend, and infrastructure together
+- **Dependency Management**: Automatic dependency updates across all packages
+- **Security Scanning**: Centralized security scanning for all components
+
+### Better Documentation
+- **Centralized Docs**: All documentation in one place
+- **Consistent Structure**: Standardized documentation format
+- **Cross-References**: Easy linking between component documentation
+- **Version Alignment**: Documentation always matches code version
+

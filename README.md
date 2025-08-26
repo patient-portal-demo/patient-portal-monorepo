@@ -30,7 +30,7 @@ patient-portal-monorepo/
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/bubbe-arch/patient-portal-monorepo.git
+git clone https://github.com/patient-portal-demo/patient-portal-monorepo.git
 cd patient-portal-monorepo
 
 # Install all dependencies
